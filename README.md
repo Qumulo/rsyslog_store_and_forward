@@ -1,4 +1,4 @@
-# How to configure rsyslog on Ubuntu 18.04 for Qumulo Audit Log Store and Forward
+# Configuring rsyslog on Ubuntu 18.04 to Store and Forward or change protocol to UDP
 
 ## Table of Contents
 
