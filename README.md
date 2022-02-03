@@ -25,8 +25,10 @@ to escaping characters, we also strip all newline characters ("\n" or "\r") from
 The fields are described below in the order that they display within the log message body:
 
 ```
-10.220.200.26,groot-1,"AD\alice",smb2,fs_read_data,ok,123,"/Mike/docs/image.png",""
+W.X.Y.Z,groot-1,"AD\alice",smb2,fs_read_data,ok,123,"/Mike/docs/image.png",""
 ```
+
+Where **W.X.Y.Z** would equal a valid IP address.
 
 ## Log Field Definitions
 
@@ -248,14 +250,14 @@ Simply copy this file into **/etc/rsyslog.d**. Once that file is copied, using y
 editor, edit that file.
 
 Towards the bottom of the file, you will see a filter (see below example). You need to change the **omfwd**
-definition so that the forwarding occurs to the correct **Target**. This example uses **10.220.246.28** and
+definition so that the forwarding occurs to the correct **Target**. This example uses **W.X.Y.Z** and
 this is the IP that will need to be changed. Additionally, you can change the **Protocol** from udp to tcp
 if you wish to enable **store and forward** log shipping if the receiver is down for any reason.
 
 ```
 # Filter to catch all Qumulo audit log messages.
 if ($app-name startswith "qumulo") then {
-action(type="omfwd" Target="10.220.246.28" Port="514" Protocol="udp" template="QumuloAuditFormat"
+action(type="omfwd" Target="W.X.Y.Z" Port="514" Protocol="udp" template="QumuloAuditFormat"
                queue.spoolDirectory="/var/log/qumulo"
                queue.type="LinkedList"
                queue.filename="StoreForward.queue"
@@ -350,10 +352,12 @@ Sample Output:
 qq audit_get_config
 {
 "enabled": true,
-"server_address": "10.220.200.26",
+"server_address": "W.X.Y.Z",
 "server_port": 514
 }
 ```
+
+Where **W.X.Y.Z** would equal a valid IP address.
 
 Use the qq command below to check the current state of the connection with the remote syslog instance:
 
