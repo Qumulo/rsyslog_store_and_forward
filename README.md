@@ -189,7 +189,7 @@ at a later date or time.
 ## Why would I use UDP for rsyslog data?
 
 The rsyslogd daemon was originally configured to use UDP for log forwarding to reduce overhead. While UDP
-is an unreliable protocok, it's streaming method does not require the overhead of establishing a network
+is an unreliable protocol, it's streaming method does not require the overhead of establishing a network
 session. This protocol also reduces network load as the network stream requires no receipt verification
 or window adjustment.
 
@@ -209,7 +209,7 @@ received.
 
 ### Why would you say **store and forward** with UDP
 
-In actual fact, the name **store and forward** will only work with TCP because of the message
+In actual fact, **store and forward** will only work with TCP because of the message
 acknowledgement and the tracking of which messages have been forwarded to the receiver. We have
 kept the name because it is possible that you wish to aggregate mesaages into applications like
 
