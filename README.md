@@ -267,7 +267,7 @@ stop
 
 ### /var/log/qumulo directory and permissions
 
-The Elasticsearch docker example, that this rsyslog configuration is based upon, depends upon the
+The rsyslog configuration file included in this example depends upon the
 directory **/var/log/qumulo** existing and having the correct permissions.
 
 Create the directory if it doesn't already exist.
@@ -380,10 +380,10 @@ qq audit_get_status
 }
 ```
 
-## Verify Qumulo Audit Logs
+## Verify Store and Forward (if protocol is NOT udp)
 
-Since we have configured **/var/log/qumulo** as the directory in which we want to store the Qumulo Audit
-Logs, verifying that everything is working correctly is quite simple.
+Since we have configured **/var/log/qumulo** as the directory in which we want to store the Store
+and Forward logs, verifying that everything is working correctly is quite simple.
 
 In order to view if logs are being written, login to the Ubuntu server where you configured rsyslog. Then,
 run the command:
@@ -396,30 +396,14 @@ Understand that you will **ONLY** see store and forward logs if you are using th
 and the receiver is not running. Otherwise, this directory will be empty.
 
 ```
-root@dq2-a-40g:/var/log/qumulo# ls -l /var/log/qumulo
-total 3210844
--rw-r--r-- 1 syslog syslog  21193194 Jan 13 17:26 baby-groot-1.log
--rw-r--r-- 1 syslog syslog     40533 Jan 13 21:22 baby-groot-2.log
--rw-r--r-- 1 syslog syslog       513 Jan 13 17:26 baby-groot-3.log
--rw-r--r-- 1 syslog syslog      2120 Jan 13 18:02 baby-groot-4.log
--rw-r--r-- 1 syslog syslog      3403 Jan 13 17:59 baby-groot-5.log
--rw-r--r-- 1 syslog syslog      5728 Jan 13 17:51 baby-groot-6.log
--rw-r--r-- 1 syslog syslog 130791299 Jan 14 02:51 groot-1.log
--rw-r--r-- 1 syslog syslog 978088566 Jan  9 23:36 groot-1.log-2020-01-09
--rw-r--r-- 1 syslog syslog 201909679 Jan 11 06:25 groot-1.log-2020-01-11
--rw-r--r-- 1 syslog syslog 156490287 Jan 12 06:24 groot-1.log-2020-01-12
--rw-r--r-- 1 syslog syslog 156671182 Jan 13 06:25 groot-1.log-2020-01-13
--rw-r--r-- 1 syslog syslog  71506548 Jan 14 02:51 groot-2.log
--rw-r--r-- 1 syslog syslog 533193280 Jan  9 23:36 groot-2.log-2020-01-09
--rw-r--r-- 1 syslog syslog 110679565 Jan 11 06:25 groot-2.log-2020-01-11
--rw-r--r-- 1 syslog syslog  85755381 Jan 12 06:24 groot-2.log-2020-01-12
--rw-r--r-- 1 syslog syslog  85742601 Jan 13 06:25 groot-2.log-2020-01-13
--rw-r--r-- 1 syslog syslog  60764816 Jan 14 02:51 groot-3.log
--rw-r--r-- 1 syslog syslog 453419669 Jan  9 23:36 groot-3.log-2020-01-09
--rw-r--r-- 1 syslog syslog  94183825 Jan 11 06:24 groot-3.log-2020-01-11
--rw-r--r-- 1 syslog syslog  72874080 Jan 12 06:24 groot-3.log-2020-01-12
--rw-r--r-- 1 syslog syslog  72939093 Jan 13 06:25 groot-3.log-2020-01-13
--rw-r--r-- 1 syslog syslog    610767 Jan 14 02:51 groot-4.log
--rw-r--r-- 1 syslog syslog    407103 Jan 14 00:17 groot-5.log
--rw-r--r-- 1 syslog syslog    490019 Jan 14 02:49 groot-6.log
+root@dq2-b-40g:/var/log/qumulo# ls -lt
+total 7164
+-rw------- 1 syslog syslog     593 Feb  3 16:55 StoreForward.queue.qi
+-rw------- 1 syslog syslog 1014310 Feb  3 16:55 StoreForward.queue.00000008
+-rw------- 1 syslog syslog 1049161 Feb  3 16:55 StoreForward.queue.00000007
+-rw------- 1 syslog syslog 1049026 Feb  3 16:55 StoreForward.queue.00000006
+-rw------- 1 syslog syslog 1048733 Feb  3 16:55 StoreForward.queue.00000005
+-rw------- 1 syslog syslog 1048580 Feb  3 16:55 StoreForward.queue.00000004
+-rw------- 1 syslog syslog 1048877 Feb  3 16:55 StoreForward.queue.00000003
+-rw------- 1 syslog syslog 1048708 Feb  3 16:55 StoreForward.queue.00000002
 ```
