@@ -4,8 +4,8 @@
 
    * [Qumulo Audit Logging](#qumulo-audit-logging)
    * [Log Field Definitions](#log-field-definitions)
-   * [Why Store and Forward?](#why-store-and-forward?)
-   * [Why would I use UDP for rsyslog data?](#why-would-i-use-udp-for-rsyslog-data?)
+   * [Why Store and Forward?](#why-store-and-forward)
+   * [Why would I use UDP for rsyslog data?](#why-would-i-use-udp-for-rsyslog-data)
    * [Configuration with rsyslog](#configuration-with-rsyslog)
    * [Enable Audit Logging via the UI](#enable-audit-logging-via-the-ui)
    * [Enable Audit Logging via the CLI](#enable-audit-logging-via-the-cli)
