@@ -1,3 +1,8 @@
+# THIS REPOSITORY IS DEPRECATED #
+
+* Please use [LogFilter](https://github.com/Qumulo/LogFilter) for all new Audit Log deployments.
+* This repo will be left as is for previous deployments that reference it.
+
 # Configuring rsyslog on Ubuntu 18.04 to Store and Forward or change protocol to UDP
 
 ## Table of Contents
